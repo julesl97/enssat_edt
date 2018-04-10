@@ -7,6 +7,8 @@ var msg = $(".msg")[0];
 var days = $(".calendar .days .day");
 var date = $(".calendar .chosenDate")[0];
 var filter = $(".calendar .filter")[0];
+var promoSelec = $(".selector input[name=sel1]");
+var anneeSelect = $(".selector input[name=sel2]");
 var modes = $(".selector input[name=mode]");
 var displaySelec = $(".selector input[name=display]");
 date.value = new Date().toJSON().slice(0,10);
@@ -23,10 +25,10 @@ function nbWeek(d) { //nb of week between 1970-01-01 and the date given(in milli
 function nbMilli(w) { //number of milliseconds elapsed during n weeks
   return w*nbSecSemaine-3*24*3600*1000;
 }
-function findMode(modes){ //search for which of the mode as been selected
-  for(let mode of modes)
-    if(mode.checked)
-      return mode.id;
+function findSelected(radioSelect){ //search for which of the mode as been selected
+  for(let r of radioSelect)
+    if(r.checked)
+      return r.id;
 }
 const frenchDays = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche']; 
 
@@ -34,6 +36,11 @@ function updateFile(){
   socket.emit("updateFile");
 } 
 let emptyRooms = {};
+
+function updateFilter(){
+	filter.value = findSelected(promoSelec)+findSelected(anneeSelect);
+	display();
+}
 
 function display(){
   let dateValue=new Date(date.value);
@@ -44,7 +51,7 @@ function display(){
 
   if(!EDT.hasOwnProperty(it))
     EDT[it]=[];
-  switch(findMode(modes)){
+  switch(findSelected(modes)){
     case "cours":
       renderWeek(EDT[it]);
       break;
@@ -90,7 +97,7 @@ function display(){
       renderWeek(Object.values(emptyRooms));
       break;
     default:
-      alert("mode '"+findMode(modes)+"' unknown");
+      alert("mode '"+findSelected(modes)+"' unknown");
   }
 }
 
