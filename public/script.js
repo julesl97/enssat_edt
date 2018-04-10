@@ -11,8 +11,9 @@ var modes = $(".selector input[name=mode]");
 var displaySelec = $(".selector input[name=display]");
 date.value = new Date().toJSON().slice(0,10);
 
-var EDT={};  //EDT sorted by week number
-var rooms=[];//list of rooms, updated at each change in database(on "update" received)
+var EDT={};  			//EDT sorted by week number
+var rooms=[];			//list of rooms, updated at each change in database(on "update" received)
+var descItems=[];	//list of all elements in all description
 
 const nbSecSemaine = 1000*3600*24*7;
 
@@ -124,18 +125,26 @@ function renderWeek(week){
 
 socket.on('update', (data) => {
   console.log("packet update recu ("+data.length+"octets)");
-  let tmp = JSON.parse(data);
-  tmp.forEach((e) => {
+  data = JSON.parse(data);
+  data.forEach((e) => {
     e.location.split(/[,-]/).forEach((s) => {
       if(rooms.indexOf(s) == -1)rooms.push(s);
-    });
-  });
-  for(let i in tmp){
-    let it = nbWeek(tmp[i].starttime);
+		});
+	});
+	data.forEach((e)=>{
+		e.description.split("\n").forEach((s)=>{
+			if(!descItems.includes(s))
+				descItems.push(s);
+		});
+	});
+	descItems.sort();
+
+  for(let e of data){
+    let it = nbWeek(e.starttime);
     if(EDT.hasOwnProperty(it))
-      EDT[it].push(tmp[i]);
+      EDT[it].push(e);
     else
-      EDT[it] = [tmp[i]];
+      EDT[it] = [e];
   }
   display();
 });
