@@ -1,0 +1,58 @@
+<div class="tags">
+  <span>ELEC1</span>
+  <span>TP3</span>
+  <ul>
+    <li>x</li>
+    <li>r</li>
+    <li>e</li>
+  </ul>
+</div>
+<style>
+.tags{
+  position: relative;
+  display: inline-block;
+  border: 1px solid #aaa;
+  border-radius: 5px;
+  padding: 3px 8px;
+}
+
+.tags span{
+  background: lightblue;
+  border: 1px solid #377387;
+  border-radius: 5px;
+  padding: 0 3px;
+  font-family: sans-serif;
+  cursor: pointer;
+}
+
+.tags span::before{
+  content:"×";
+  margin-right:3px;
+  font-size: 100%;
+  color: #377387;
+}
+
+.tags span:hover::before{
+  color: #aaa;
+}
+
+.tags ul{
+  position: absolute;
+  width: calc(100% + 2px);
+  background-color: white;
+  display: block;
+  z-index: 1;
+  left: -1px;
+  border: 1px solid #aaa;
+  list-style: none;
+  padding: 5px;
+  border-radius: 0 0 5px 5px;
+  border-top: 0px;
+}
+
+.tags li{
+  border: 1px solid #aaa;
+  border-bottom: 0px;
+  padding: 0 2px;
+}
+</style>

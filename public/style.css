@@ -1,0 +1,132 @@
+
+.calendar{
+  overflow: hidden;
+  border:1px grey solid;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px;
+  padding: 0px;
+}
+
+
+.calendar .body{
+  position: relative;
+}
+
+.calendar .hours{
+  padding-top: 50px;
+}
+.calendar .hours .hour{
+  width: 50px;
+  height: 50px;
+  text-align: right;
+  background: white;
+  padding-right: 4px; 
+}
+
+.calendar .hours .hour::before{
+  content: '';
+  border-bottom: #e0e0e0 1px solid;
+  position: absolute;
+  width: 100%;
+  z-index: -1;
+}
+
+.calendar .hours .hour span{
+  position: relative;
+  top:-10px;
+}
+
+.calendar .days{
+  position:absolute;
+  top: 0px;
+  left: 50px;
+  text-align: center;
+  width: calc(100% - 50px);
+  padding: 0 10px;
+  height: 100%;
+  display: flex;
+}
+
+.calendar .day{
+  position: relative;
+  display: inline-block;
+  margin: 0;
+  height: 100%;
+  border-right: #e0e0e0 1px solid;
+  flex: auto;
+}
+.calendar .day:nth-child(1){
+  border-left: #e0e0e0 1px solid;
+}
+
+.calendar .day .title{
+  height: 50px;
+  text-align: center;
+}
+
+.calendar .day .title span{
+  
+  font-size: 2em;
+  display: block;
+  margin-top: -10px;
+}
+
+.calendar .day .event{
+  position: absolute;
+  background-color: grey;
+  padding: 3px;
+  border-radius: 5px;
+  width: 100%;
+  text-align: left;
+  white-space:  pre-wrap;
+  overflow: hidden;
+}
+
+.calendar .day .event:hover{
+  width: 180%;
+  height: initial!important;
+  z-index: 1;
+}
+
+.calendar .event .name{
+  font-weight: bold;
+}
+
+/*
+ * selector
+ */
+
+.selector input{
+  display:none;
+}
+.selector input:checked + label {
+  background: #ccc;
+}
+
+.selector input:checked + label {
+  outline: 0;
+  color: #333;
+  background-color: #e6e6e6;
+  border-color: #adadad;
+  background-image: none;
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}
+
+.selector input:checked + label:hover {
+  color: #333;
+  background-color: #d4d4d4;
+  border-color: #8c8c8c;
+}
+.selector .item{
+  display:inline-block;
+  margin-left:-1px;
+}
+.selector .item label{
+  border-radius:0px;
+}
+.selector .item:first-child label{
+  border-radius: 5px 0px 0px 5px;
+}
+.selector .item:last-child label{
+  border-radius: 0px 5px 5px 0px;
+}
