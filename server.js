@@ -33,7 +33,7 @@ io.on('connection', (socket) => {
   socket.on('updateFile', (data) => {
     if(Date.now() - lastUpdate > 300000){ //5min
       lastUpdate=Date.now();
-      updateFile(socket);
+      process.nextTick(function(){updateFile(socket)});
     }else{
       socket.emit("errormsg", "update déjà effectué il y a moins de 5min");
       log("errormsg : update déjà effectué il y a moins de 5min");
