@@ -31,41 +31,71 @@
               <input type="radio" name="sel1" id="IMR" onchange="updateFilter()">
               <label class="btn btn-default" for="IMR" >IMR</label>
             </div>
-          </div>
-          <div class="selector">
-            Année : 
-            <div class="item">
-              <input type="radio" name="sel2" id="1" onchange="updateFilter()">
-              <label class="btn btn-default" for="1" >1A</label>
-            </div><div class="item">
-              <input type="radio" name="sel2" id="2" onchange="updateFilter()">
-              <label class="btn btn-default" for="2" >2A</label>
-            </div><div class="item">
-              <input type="radio" name="sel2" id="3" onchange="updateFilter()">
-              <label class="btn btn-default" for="3" >3A</label>
-            </div>
-          </div>
-        </div>
-        <div class="selector col-md-6">
-          Quoi afficher : 
-          <div class="item">
-            <input type="radio" name="mode" id="cours" onchange="display()" checked>
-            <label class="btn btn-default" for="cours" >les cours</label>
-          </div><div class="item">
-            <input type="radio" name="mode" id="salleVide" onchange="display()" >
-            <label class="btn btn-default" for="salleVide" >les salles vides</label>
-          </div>
-        </div>
-        <div class="selector col-md-6">
-          Affichage : 
-          <div class="item">
-            <input type="radio" name="display" id="week" onchange="display()" checked>
-            <label class="btn btn-default" for="week" >semaine</label>
-          </div><div class="item">
-            <input type="radio" name="display" id="month" onchange="display()" >
-            <label class="btn btn-default" for="month" >mois</label>
-          </div><div class="item">
-            <input type="radio" name="display" id="list" onchange="display()" >
+					</div>
+					<div class="selector">
+						Année : 
+						<div class="item">
+							<input type="radio" name="sel2" id="1" onchange="updateFilter()">
+							<label class="btn btn-default" for="1" >1A</label>
+						</div><div class="item">
+							<input type="radio" name="sel2" id="2" onchange="updateFilter()">
+							<label class="btn btn-default" for="2" >2A</label>
+						</div><div class="item">
+							<input type="radio" name="sel2" id="3" onchange="updateFilter()">
+							<label class="btn btn-default" for="3" >3A</label>
+						</div>
+					</div>
+					<div>
+						<span style="display:inline">Groupe : </span>
+						<div class="selector">
+							<div class="item">
+								<input type="radio" name="sel3" id="TP1" onchange="updateFilter()">
+								<label class="btn btn-default" for="TP1" >TP1</label>
+							</div><div class="item">
+								<input type="radio" name="sel3" id="TP2" onchange="updateFilter()">
+								<label class="btn btn-default" for="TP2" >TP2</label>
+							</div><div class="item">
+								<input type="radio" name="sel3" id="TP3" onchange="updateFilter()">
+								<label class="btn btn-default" for="TP3" >TP3</label>
+							</div><div class="item">
+								<input type="radio" name="sel3" id="TP3bis" onchange="updateFilter()">
+								<label class="btn btn-default" for="TP3bis" >TP3bis</label>
+							</div>
+						</div>
+						<div class="selector">
+							<div class="item">
+								<input type="radio" name="sel4" id="TD1" onchange="updateFilter()">
+								<label class="btn btn-default" for="TD1" >TD1</label>
+							</div><div class="item">
+								<input type="radio" name="sel4" id="TD2" onchange="updateFilter()">
+								<label class="btn btn-default" for="TD2" >TD2</label>
+							</div><div class="item">
+								<input type="radio" name="sel4" id="TD3" onchange="updateFilter()">
+								<label class="btn btn-default" for="TD3" >TD3</label>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="selector col-md-6">
+					Quoi afficher : 
+					<div class="item">
+						<input type="radio" name="mode" id="cours" onchange="display()" checked>
+						<label class="btn btn-default" for="cours" >les cours</label>
+					</div><div class="item">
+						<input type="radio" name="mode" id="salleVide" onchange="display()" >
+						<label class="btn btn-default" for="salleVide" >les salles vides</label>
+					</div>
+				</div>
+				<div class="selector col-md-6">
+					Affichage : 
+					<div class="item">
+						<input type="radio" name="display" id="week" onchange="display()" checked>
+						<label class="btn btn-default" for="week" >semaine</label>
+					</div><div class="item">
+						<input type="radio" name="display" id="month" onchange="display()" >
+						<label class="btn btn-default" for="month" >mois</label>
+					</div><div class="item">
+						<input type="radio" name="display" id="list" onchange="display()" >
             <label class="btn btn-default" for="list" >liste</label>
           </div>
         </div>

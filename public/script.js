@@ -9,6 +9,8 @@ var date = $(".calendar .chosenDate")[0];
 var filter = $(".calendar .filter")[0];
 var promoSelec = $(".selector input[name=sel1]");
 var anneeSelect = $(".selector input[name=sel2]");
+var groupeTDSelect = $(".selector input[name=sel3]");
+var groupeTPSelect = $(".selector input[name=sel4]");
 var modes = $(".selector input[name=mode]");
 var displaySelec = $(".selector input[name=display]");
 date.value = new Date().toJSON().slice(0,10);
@@ -29,6 +31,7 @@ function findSelected(radioSelect){ //search for which of the mode as been selec
   for(let r of radioSelect)
     if(r.checked)
       return r.id;
+	return false;
 }
 const frenchDays = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche']; 
 
@@ -38,7 +41,10 @@ function updateFile(){
 let emptyRooms = {};
 
 function updateFilter(){
-	filter.value = findSelected(promoSelec)+findSelected(anneeSelect);
+	if(findSelected(promoSelec)) filter.value = findSelected(promoSelec);
+	if(findSelected(anneeSelect)) filter.value += findSelected(anneeSelect)+' \\\(';
+	if(findSelected(groupeTDSelect)) filter.value += "| "+findSelected(groupeTDSelect);
+	if(findSelected(groupeTPSelect)) filter.value += findSelected(groupeTPSelect);
 	display();
 }
 

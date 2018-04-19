@@ -96,6 +96,9 @@
  * selector
  */
 
+.selector{
+	display:inline-block;
+}
 .selector input{
   display:none;
 }
