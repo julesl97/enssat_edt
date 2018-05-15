@@ -19,62 +19,64 @@
           <div class="selector">
             Spécialité : 
             <div class="item">
-              <input type="radio" name="sel1" id="ELEC" onchange="updateFilter()">
+              <input type="radio" name="sel1" id="ELEC" onchange="updateSelect()">
               <label class="btn btn-default" for="ELEC" >Electronique</label>
             </div><div class="item">
-              <input type="radio" name="sel1" id="INFO" onchange="updateFilter()">
+              <input type="radio" name="sel1" id="INFO" onchange="updateSelect()">
               <label class="btn btn-default" for="INFO" >Informatique</label>
             </div><div class="item">
-              <input type="radio" name="sel1" id="PHOT" onchange="updateFilter()">
+              <input type="radio" name="sel1" id="PHOT" onchange="updateSelect()">
               <label class="btn btn-default" for="PHOT" >Photonique</label>
             </div><div class="item">
-              <input type="radio" name="sel1" id="IMR" onchange="updateFilter()">
+              <input type="radio" name="sel1" id="IMR" onchange="updateSelect()">
               <label class="btn btn-default" for="IMR" >IMR</label>
             </div>
 					</div>
 					<div class="selector">
 						Année : 
 						<div class="item">
-							<input type="radio" name="sel2" id="1" onchange="updateFilter()">
+							<input type="radio" name="sel2" id="1" onchange="updateSelect()">
 							<label class="btn btn-default" for="1" >1A</label>
 						</div><div class="item">
-							<input type="radio" name="sel2" id="2" onchange="updateFilter()">
+							<input type="radio" name="sel2" id="2" onchange="updateSelect()">
 							<label class="btn btn-default" for="2" >2A</label>
 						</div><div class="item">
-							<input type="radio" name="sel2" id="3" onchange="updateFilter()">
+							<input type="radio" name="sel2" id="3" onchange="updateSelect()">
 							<label class="btn btn-default" for="3" >3A</label>
 						</div>
 					</div>
+					<select id="groups" class="form-control" name="groups" onchange="updateFilter()" multiple></select>
+					<!--
 					<div>
 						<span style="display:inline">Groupe : </span>
 						<div class="selector">
 							<div class="item">
-								<input type="radio" name="sel3" id="TP1" onchange="updateFilter()">
+								<input type="radio" name="sel3" id="TP1" onchange="updateSelect()">
 								<label class="btn btn-default" for="TP1" >TP1</label>
 							</div><div class="item">
-								<input type="radio" name="sel3" id="TP2" onchange="updateFilter()">
+								<input type="radio" name="sel3" id="TP2" onchange="updateSelect()">
 								<label class="btn btn-default" for="TP2" >TP2</label>
 							</div><div class="item">
-								<input type="radio" name="sel3" id="TP3" onchange="updateFilter()">
+								<input type="radio" name="sel3" id="TP3" onchange="updateSelect()">
 								<label class="btn btn-default" for="TP3" >TP3</label>
 							</div><div class="item">
-								<input type="radio" name="sel3" id="TP3bis" onchange="updateFilter()">
+								<input type="radio" name="sel3" id="TP3bis" onchange="updateSelect()">
 								<label class="btn btn-default" for="TP3bis" >TP3bis</label>
 							</div>
 						</div>
 						<div class="selector">
 							<div class="item">
-								<input type="radio" name="sel4" id="TD1" onchange="updateFilter()">
+								<input type="radio" name="sel4" id="TD1" onchange="updateSelect()">
 								<label class="btn btn-default" for="TD1" >TD1</label>
 							</div><div class="item">
-								<input type="radio" name="sel4" id="TD2" onchange="updateFilter()">
+								<input type="radio" name="sel4" id="TD2" onchange="updateSelect()">
 								<label class="btn btn-default" for="TD2" >TD2</label>
 							</div><div class="item">
-								<input type="radio" name="sel4" id="TD3" onchange="updateFilter()">
+								<input type="radio" name="sel4" id="TD3" onchange="updateSelect()">
 								<label class="btn btn-default" for="TD3" >TD3</label>
 							</div>
 						</div>
-					</div>
+					</div>-->
 				</div>
 				<div class="selector col-md-6">
 					Quoi afficher : 

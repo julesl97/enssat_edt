@@ -50,7 +50,8 @@ function updateFile(socket){
       if(code == 0){
         log("téléchargement réussi");
         parseIcsFile(FILE_NAME_EDT);
-        socket.broadcast.emit("update",EDTstringify);
+        socket.emit("update",EDTstringify);//send to the asker
+        socket.broadcast.emit("update",EDTstringify);//send to everyone else
         log('update send to all connected');
       }else{
         log("(code="+code+") ERREUR lors du téléchargement =============================");

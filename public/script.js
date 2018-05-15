@@ -11,6 +11,7 @@ var promoSelec = $(".selector input[name=sel1]");
 var anneeSelect = $(".selector input[name=sel2]");
 var groupeTDSelect = $(".selector input[name=sel3]");
 var groupeTPSelect = $(".selector input[name=sel4]");
+var groupsHtml = $("#groups");
 var modes = $(".selector input[name=mode]");
 var displaySelec = $(".selector input[name=display]");
 date.value = new Date().toJSON().slice(0,10);
@@ -18,6 +19,7 @@ date.value = new Date().toJSON().slice(0,10);
 var EDT={};  			//EDT sorted by week number
 var rooms=[];			//list of rooms, updated at each change in database(on "update" received)
 var descItems=[];	//list of all elements in all description
+var groups=[];		//list of all groups (from descItems)
 
 const nbSecSemaine = 1000*3600*24*7;
 
@@ -40,11 +42,31 @@ function updateFile(){
 } 
 let emptyRooms = {};
 
+function updateSelect(){
+	var strFilter;
+	groupsHtml.html("");
+	groups.forEach((e) => {
+		if(findSelected(promoSelec)) strFilter = findSelected(promoSelec);
+		if(findSelected(anneeSelect)) strFilter += findSelected(anneeSelect);
+		if(e.match(strFilter))
+			groupsHtml.html(groupsHtml.html()+"<option>"+e+"</option>")
+	});
+}
 function updateFilter(){
-	if(findSelected(promoSelec)) filter.value = findSelected(promoSelec);
-	if(findSelected(anneeSelect)) filter.value += findSelected(anneeSelect)+' \\\(';
-	if(findSelected(groupeTDSelect)) filter.value += "| "+findSelected(groupeTDSelect);
-	if(findSelected(groupeTPSelect)) filter.value += findSelected(groupeTPSelect);
+	filter.value="";
+	for(let i of groupsHtml.children()){
+		if(i.selected){
+			if(filter.value=="")filter.value=i.innerHTML;
+			else filter.value+="|"+i.innerHTML;
+		}
+	}
+//filter.value=filter.value.replace(/\(/,"\\(")
+//filter.value=filter.value.replace(/\)/,"\\)")
+	filter.value=filter.value.replace(/([()])/g,"\\$1")
+//if(findSelected(promoSelec)) filter.value = findSelected(promoSelec);
+//if(findSelected(anneeSelect)) filter.value += findSelected(anneeSelect)+' \\\(';
+//if(findSelected(groupeTDSelect)) filter.value += "| "+findSelected(groupeTDSelect);
+//if(findSelected(groupeTPSelect)) filter.value += findSelected(groupeTPSelect);
 	display();
 }
 
@@ -146,6 +168,8 @@ socket.on('update', (data) => {
 	});
 	data.forEach((e)=>{
 		e.description.split("\n").forEach((s)=>{
+			if(s.match(/INFO|ELEC|PHOT|IMR|EIP|CP/) && !groups.includes(s))
+				groups.push(s);
 			if(!descItems.includes(s))
 				descItems.push(s);
 		});
@@ -159,6 +183,10 @@ socket.on('update', (data) => {
     else
       EDT[it] = [e];
   }
+	groupsHtml.html("");
+	groups.forEach((e) => {
+		groupsHtml.html(groupsHtml.html()+"<option>"+e+"</option>")
+	});
   display();
 });
 
