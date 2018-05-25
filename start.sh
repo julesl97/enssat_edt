@@ -1,5 +1,7 @@
 #!/bin/bash
 
+echo [restart] >> log.txt
+
 node server.js >> log.txt &
 
 #function funcExit(){
