@@ -43,11 +43,11 @@ function updateFile(){
 let emptyRooms = {};
 
 function updateSelect(){
-	var strFilter;
+	var strFilter="";
+	if(findSelected(promoSelec)) strFilter = findSelected(promoSelec);
+	if(findSelected(anneeSelect)) strFilter += findSelected(anneeSelect);
 	groupsHtml.html("");
 	groups.forEach((e) => {
-		if(findSelected(promoSelec)) strFilter = findSelected(promoSelec);
-		if(findSelected(anneeSelect)) strFilter += findSelected(anneeSelect);
 		if(e.match(strFilter))
 			groupsHtml.html(groupsHtml.html()+"<option>"+e+"</option>")
 	});

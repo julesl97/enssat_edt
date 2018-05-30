@@ -18,7 +18,11 @@
           <h2>choisir le groupe</h2>
           <div class="selector">
             Spécialité : 
+
             <div class="item">
+              <input type="radio" name="sel1" id="(INFO|ELEC|PHOTO|IMR)" onchange="updateSelect()" checked>
+							<label class="btn btn-default" for="(INFO|ELEC|PHOTO|IMR)" >Tous</label>
+            </div><div class="item">
               <input type="radio" name="sel1" id="ELEC" onchange="updateSelect()">
               <label class="btn btn-default" for="ELEC" >Electronique</label>
             </div><div class="item">
@@ -35,6 +39,9 @@
 					<div class="selector">
 						Année : 
 						<div class="item">
+							<input type="radio" name="sel2" id="(1|2|3)" onchange="updateSelect()" checked>
+							<label class="btn btn-default" for="(1|2|3)" >Tous</label>
+						</div><div class="item">
 							<input type="radio" name="sel2" id="1" onchange="updateSelect()">
 							<label class="btn btn-default" for="1" >1A</label>
 						</div><div class="item">
