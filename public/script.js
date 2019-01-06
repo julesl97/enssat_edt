@@ -26,7 +26,7 @@ const nbSecSemaine = 1000*3600*24*7;
 function nbWeek(d) { //nb of week between 1970-01-01 and the date given(in millisec)
   return Math.trunc((d+3*24*3600*1000)/nbSecSemaine);
 }
-function nbMilli(w) { //number of milliseconds elapsed during n weeks
+function nbMilli(w) { //number of milliseconds elapsed during w weeks
   return w*nbSecSemaine-3*24*3600*1000;
 }
 function findSelected(radioSelect){ //search for which of the mode as been selected
@@ -97,8 +97,8 @@ function display(){
         for(let i=0, time=nbMilli(it); i<7; i++, time+=24*3600*1000){
           let e={
             name:r,
-            starttime:time+7*3600*1000,
-            endtime:time+22*3600*1000,
+            starttime:time+7*3600*1000+15*60*1000,
+            endtime:time+21*3600*1000,
             location:" ",
             description:" "
           };
@@ -109,8 +109,9 @@ function display(){
           for(let e of weekByRooms[r]){
             let er;
             for(er of emptyRooms)
-              if(er.starttime<e.starttime && e.starttime<er.endtime)
-                break;
+							if(er.name == r)
+								if(er.starttime<=e.starttime && e.starttime<er.endtime)
+                	break;
             let tmp=er.endtime;
             er.endtime=e.starttime;
             emptyRooms.push({
@@ -122,7 +123,7 @@ function display(){
             });
           }
       }
-      renderWeek(Object.values(emptyRooms));
+      renderWeek(emptyRooms);
       break;
     default:
       alert("mode '"+findSelected(modes)+"' unknown");
